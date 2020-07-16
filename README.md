@@ -144,15 +144,11 @@ Watch for the deployed driver,
 
 
 
-## Part C, Read, process and store your data using Keep Your Own key, IBM Cloud object store and Apache Spark.
-
-
 
 
 #References
 
-1. RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis. Daniel et al. 
-[link](https://phys.org/news/2013-12-trio-rsa-encryption-keys-noise.html)
+1. [RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis. Daniel et al.] (https://phys.org/news/2013-12-trio-rsa-encryption-keys-noise.html)
 2. [HSM](https://en.wikipedia.org/wiki/Hardware_security_module)
 3. https://www.openshift.com
 4. [IBM Cloud datashield](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#datashield)
