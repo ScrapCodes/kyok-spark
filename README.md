@@ -27,9 +27,10 @@ scale data processing engine like Apache Spark.
 figure: Borrowed from IBM Cloud docs, [link](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#encrypt_ov)
 
 This diagram, shows an overview of data encryption in a Redhat openshift cluster, using a user provided root key, managed
- by a Key management service (KMS) instance. Both data at rest and data in use can be encrypted. For encrypting data in use,
+ by a Key management service (KMS) instance. Both data at rest and data in use can be encrypted, with the user provided keys (i.e. KYOK). For encrypting data in use,
  please take a look at [IBM Cloud datashield](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#datashield)
 
+### Prerequisites
 
 In order to proceed with the steps in this code pattern, you should have, KMS instance running such as, 
 [IBM Key protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-provision#provision) or 
@@ -143,10 +144,7 @@ Watch for the deployed driver,
         3.1452
 
 
-
-
-
-#References
+# References
 
 1. [RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis. Daniel et al.] (https://phys.org/news/2013-12-trio-rsa-encryption-keys-noise.html)
 2. [HSM](https://en.wikipedia.org/wiki/Hardware_security_module)
