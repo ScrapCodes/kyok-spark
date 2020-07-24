@@ -143,6 +143,19 @@ Watch for the deployed driver,
         $> oc logs spark-xyz-driver
         3.1452
 
+The example above comes along with Spark distribution, however one could write his
+own spark application and submit using the guide on [Spark Submit](http://spark.apache.org/docs/latest/submitting-applications.html).
+There are some common ready to use templates available,
+ e.g. Maven + Java Spark application. Sbt + Scala spark application templates including application templates
+  to read and write from AWS and IBM Cloud Object Storage.
+
+[Spark Templates](https://github.com/ScrapCodes/spark-templates)
+
+IBM Cloud Object storage (which can be accessed with the same tools as AWS S3) also supports KYOK or KMS for encryption,
+ in addition to provider ecnryption. While processing sensitive data, one should consider using IBM Cloud Object storage or
+ IBM Cloud block storage `with KYOK encryption enabled`. The entire processing pipeline should be KYOK enabled, and not just one component.
+ Please checkout out, this guide for more details: 
+ [IBM Cloud Object Storage - manage encryption](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-encryption)
 
 # References
 
