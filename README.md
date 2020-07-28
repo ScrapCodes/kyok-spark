@@ -1,4 +1,4 @@
-# `Keep your own Key` and process data with Apache Spark.
+# Securely access your data in Spark with `Keep Your Own Key` and `Openshift` on IBM Cloud.
 
 A Cloud HSM - in other words, a Hardware Security Module available for Rent. Cloud HSM is widely
  available, what does it mean for us? How can we leverage this in our applications.
@@ -159,7 +159,7 @@ IBM Cloud Object storage (which can be accessed with the same tools as AWS S3) a
 
 # References
 
-1. [RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis. Daniel et al.] (https://phys.org/news/2013-12-trio-rsa-encryption-keys-noise.html)
+1. [RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis. Daniel et al.](https://phys.org/news/2013-12-trio-rsa-encryption-keys-noise.html)
 2. [HSM](https://en.wikipedia.org/wiki/Hardware_security_module)
 3. https://www.openshift.com
 4. [IBM Cloud datashield](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#datashield)
