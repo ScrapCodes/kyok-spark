@@ -10,6 +10,16 @@ processing all the data related to cryptography, many such tampering and cryptan
 So this helps makes, Cloud HSM very secure for enterprise usage. It also helps take off load from CPU, for processing
 ciphering and deciphering of data and thus makes cryptography considerably faster. 
 
+What is IBM Key Protect and IBM Hyper protect in essence?
+
+IBM Cloud has these two unique offerings, tailored to different needs of the users.  
+ a) IBM Key Protect, which is pay as you go service
+and charges per API call to the KMS service. It uses a Cloud HSM instance to securely manage the Key.
+ b) IBM Hyper Protect, lets you provision a dedicated instance of a Cloud HSM server machine on the cloud.
+ 
+ Either you choose IBM Key Protect or IBM Hyper Protect, both provide a Key Management service (or KMS)
+   which can integrate well with rest of the IBM Cloud services (e.g. Openshift, Cloud Object Store etc..)
+
 There is another benefit of dedicated hardware for cryptography, i.e. they generate and store the keys on the device
  and keep them very safe. So, keys are not stored in the regular persistent storage like a system Hard drive 
 or a NAS or SAN. In fact, keys are generated and stored on the dedicated crypto device, and the device have the ability to
@@ -17,25 +27,29 @@ or a NAS or SAN. In fact, keys are generated and stored on the dedicated crypto 
  data that was accessible using these keys become inaccessible to anyone once the keys are erased.
 
 So, given the value of storing a key very securely and reliably. Now can we access the big data processing system with
- a single key, i.e. all the data encryption and authentication is achieved by a single or a group of keys. All of which
+ a single key, i.e. all the data encryption and authentication can either be done by a single or a group of keys. All of which
  is handled by a Cloud HSM instance. In this post, we will consider some salient features of `Keep your own key`, for large
 scale data processing engine like Apache Spark.
 
-# Securely access your data in Spark with IBM Key Protect and openshift 3.11
-![Overview of data encryption in a cluster](images/cs_encrypt_ov_kms.png "IBM KYOK,  Overview of data encryption in a cluster")
+# Securely access your data in Spark with IBM Key Protect and openshift 3.11 or Openshift 4.4.
+![Overview of data encryption in a openshift cluster](images/cs_encrypt_ov_kms.png "IBM KYOK,  Overview of data encryption in a openshift cluster")
 
-figure: Borrowed from IBM Cloud docs, [link](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#encrypt_ov)
+figure: Edited from IBM Cloud docs, [link](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#encrypt_ov)
 
 This diagram, shows an overview of data encryption in a Redhat openshift cluster, using a user provided root key, managed
- by a Key management service (KMS) instance. Both data at rest and data in use can be encrypted, with the user provided keys (i.e. KYOK). For encrypting data in use,
+ by a Key management service (KMS) instance. 
+ 
+ Both data at rest and data in use can be encrypted, with the user provided keys (i.e. KYOK). For encrypting data in use,
  please take a look at [IBM Cloud datashield](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#datashield)
+
+_Please note that, IBM Key protect currently only works with Openshift 4.4 and 3.11 versions._
 
 ### Prerequisites
 
 In order to proceed with the steps in this code pattern, you should have, KMS instance running such as, 
 [IBM Key protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-provision#provision) or 
-[IBM Hyper protect](https://cloud.ibm.com/catalog/services/hyper-protect-crypto-services) and an Openshift 3.11 
-(Openshift 4.x is not supported by KYOK currently.) cluster already up and running on IBM cloud 
+[IBM Hyper protect](https://cloud.ibm.com/catalog/services/hyper-protect-crypto-services) and an Openshift 4.4 or 3.11
+(Openshift 4.3 is not supported by KYOK.) cluster already up and running on IBM cloud 
 [Redhat Openshift](https://cloud.ibm.com/kubernetes/catalog/about?platformType=openshift).
 
 
@@ -120,8 +134,7 @@ We would, need a spark image to deploy the spark job via spark's k8s interface, 
 
 Here, `my-repo` is a docker public repository and you can also setup your own private or public repo using openshift.
  Details of which are out of scope for this blog. Please do check the openshift documentation 
- [link](https://docs.openshift.com/container-platform/3.11/install_config/registry/accessing_registry.html), for more
-  details.
+ [link](https://docs.openshift.com/), for more details.
         
         $> bin/docker-image-tool.sh -r my-repo -t v3.0.0 push
 
