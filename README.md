@@ -158,14 +158,21 @@ Watch for the deployed driver,
 
 The example above comes along with Spark distribution, however one could write his
 own spark application and submit using the guide on [Spark Submit](http://spark.apache.org/docs/latest/submitting-applications.html).
-We have provided a java sample under the [java-template](java-template) directory. Follow the readme under
+We have provided a java sample under the [java-template](java-template) directory. 
+
+For the convenience of the user, this blog includes a basic ready to use guide or sample for accessing
+ IBM Cloud object storage, with Apache Spark. Follow the readme under
 [java-template/readme.md](java-template/readme.md) to deploy your own code using IBM Cloud object store.
 
 More samples available at: [Spark Templates](https://github.com/ScrapCodes/spark-templates)
 
-IBM Cloud Object storage (which can be accessed with the same tools as AWS S3) also supports KYOK or KMS for encryption,
- in addition to provider ecnryption. While processing sensitive data, one should consider using IBM Cloud Object storage or
- IBM Cloud block storage `with KYOK encryption enabled`. The entire processing pipeline should be KYOK enabled, and not just one component.
+It is a common practice to use an object store(e.g. AWS S3) for accessing and storing data to be processed, IBM Cloud Object Store, let's 
+us have the convenience of an object store along with `KYOK` for encryption i.e. it supports
+integration with IBM KeyProtect and IBM HyperProtect services using a KMS interface. 
+ While processing sensitive data, one should consider using IBM Cloud Object storage or
+ IBM Cloud block storage `with KYOK encryption enabled`.
+ The entire processing pipeline should be KYOK enabled, and not just one component, otherwise purpose of 
+ having a `KYOK enabled encryption` is forfeited.
  Please checkout out, this guide for more details: 
  [IBM Cloud Object Storage - manage encryption](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-encryption)
 
