@@ -32,12 +32,22 @@ So, given the value of storing a key very securely and reliably. Now can we acce
 scale data processing engine like Apache Spark.
 
 # Securely access your data in Spark with IBM Key Protect and openshift 3.11 or Openshift 4.4.
+
+Apache Spark takes advantage of IBM's KYOK support for openshift. The following diagram describes, how at 
+different stages user provided keys are used for encryption, it shows an overview of data encryption in a
+ Redhat openshift cluster, using a user provided root key (CRK), managed by a Key management service (KMS) instance.
+  Whether one uses a IBM block storage or IBM cloud object store, the data is encrypted by user provided root keys (CRK).
+So, anything that is run on openshift, automatically benefits from the Keep your own key and the secured environment.
+
+One of the advantage is, an application running on top of openshift with KYOK enabled, gets all the benefits of Keep
+ your own key. e.g. in this case, Apache Spark is utilizing the KYOK setup, therefore one need not provide
+ additional jars or libraries to make it work, an open source release of Spark is good enough to work with, and from the
+ end users perspective there is no additional setup/config required.
+
 ![Overview of data encryption in a openshift cluster](images/cs_encrypt_ov_kms.png "IBM KYOK,  Overview of data encryption in a openshift cluster")
 
 figure: Edited from IBM Cloud docs, [link](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#encrypt_ov)
 
-This diagram, shows an overview of data encryption in a Redhat openshift cluster, using a user provided root key, managed
- by a Key management service (KMS) instance. 
  
  Both data at rest and data in use can be encrypted, with the user provided keys (i.e. KYOK). For encrypting data in use,
  please take a look at [IBM Cloud datashield](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#datashield)
