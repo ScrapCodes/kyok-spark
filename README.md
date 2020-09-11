@@ -37,11 +37,12 @@ Apache Spark takes advantage of IBM's KYOK support for openshift. The following 
 different stages user provided keys are used for encryption, it shows an overview of data encryption in a
  Redhat openshift cluster, using a user provided root key (CRK), managed by a Key management service (KMS) instance.
  All the steps that show, keys managed by the user, are not even accessible to the Cloud provider in this case IBM.
-  Whether one uses a IBM block storage or IBM cloud object store, the data is encrypted by user provided root keys (CRK).
 So, an application that is run on openshift, can benefit from the Keep your own key and the secured environment, where 
 the additional setup, is just turning on KMS integration on IBM Cloud.
  The diagram also elucidates how different services integrate well with KMS and provide a seamless 
-experience to the end user.
+experience to the end user. Whether one uses a IBM block storage or IBM cloud object store, the data is encrypted by
+ user provided root keys (CRK).
+
 
 This is one of the main advantage, i.e. an application running on top of openshift with KYOK enabled, gets all the benefits of Keep
  your own key. e.g. in this case, Apache Spark is utilizing the KYOK setup, therefore one need not provide
