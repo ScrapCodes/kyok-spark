@@ -41,7 +41,7 @@ So, an application that is run on openshift, can benefit from the Keep your own 
 the additional setup, is just turning on KMS integration on IBM Cloud.
  The diagram also elucidates how different services integrate well with KMS and provide a seamless 
 experience to the end user. Whether one uses a IBM block storage or IBM cloud object store, the data is encrypted by
- user provided root keys (CRK).
+ user provided root keys (CRK) derived wrapped-DEK (Data encryption key).
 
 
 This is one of the main advantage, i.e. an application running on top of openshift with KYOK enabled, gets all the benefits of Keep
