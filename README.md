@@ -172,6 +172,10 @@ integration with IBM KeyProtect and IBM HyperProtect services using a KMS interf
  Please checkout out, this guide for more details: 
  [IBM Cloud Object Storage - manage encryption](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-encryption)
 
+#Summary
+We learned about the importance of Keep Your Own Key to secured access to data and how we can leverage the benefits of Keep Your Own Key to run a big data workload using Apache Spark.
+Please give us your feedback !
+
 # References
 
 1. [RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis. Daniel et al.](https://phys.org/news/2013-12-trio-rsa-encryption-keys-noise.html)
