@@ -173,6 +173,7 @@ integration with IBM KeyProtect and IBM HyperProtect services using a KMS interf
  [IBM Cloud Object Storage - manage encryption](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-encryption)
 
 #Summary
+
 We learned about the importance of Keep Your Own Key to secured access to data and how we can leverage the benefits of Keep Your Own Key to run a big data workload using Apache Spark.
 Please give us your feedback !
 
