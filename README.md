@@ -73,27 +73,18 @@ In order to proceed with the steps in this code pattern, you should have, KMS in
 
 Step 1. List the KMS instances running currently,
     
-        $> ibmcloud oc kms instance ls
-        OK
-        Name                          ID                        Region     Service   
-        test-key-protect   21fe0624-UUID-UUID-UUID-4c9c5404f4c8      us-south   Key Protect   
+![](images/1_2.png)
 
 Please note: the ids listed here are not real. You need to check the output of running these commands on your system.
 
 Step 2. Get the root key from the above listed, chosen KMS instance.
     
-        $> ibmcloud oc kms crk ls --instance-id 21fe0624-UUID-UUID-UUID-4c9c5404f4c8
-           OK
-           Name   ID   
-           key1   f1328360-UUID-UUID-UUID-ed0f3526a8a4
+![](images/1_3.png)
            
 Step 3. Enable KMS provider, on your cluster. First you need to locate the cluster id of the already deployed 
     openshift cluster instance.
         
-        $> ibmcloud oc cluster ls
-        OK
-        Name                         ID                     State    Created        Workers   Location          Version                   Resource Group Name   Provider   
-        testing-cluster              abcd123456789          normal   3 months ago   3         xyz12             1.16.10_1533              testing               classic   
+![](images/1_1.png)
 
 Here, abcd123456789 is my cluster id. Note: Having a running openshift cluster and a KMS service is a prerequisite here.
 
@@ -104,15 +95,13 @@ The command to enable kms service on my openshift cluster is,
 Substituting the values from above commands for cluster id, kms instance id, and root key id. Our effective command looks like
 following.
 
-        $> ibmcloud oc kms enable -c abcd123456789 --instance-id 21fe0624-UUID-UUID-UUID-4c9c5404f4c8 --crk f1328360-UUID-UUID-UUID-ed0f3526a8a4
-        OK
+![](images/1_9.png)
 
 Once this is done, it takes a while for this update to be actually effected.
 
 To verify, this update was done successfully, 
 
-        $> ibmcloud oc cluster get -c abcd123456789 | grep -e "Master Status:"
-        Master Status:                  Ready (1 week ago)   
+![](images/1_5.png)
 
 _Note: Once the master status appears as ready, you can verify that your cluster secrets are encrypted by querying
  information that is in etcd in the master [Cloud docs link](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption#verify_kms)._ 
@@ -125,17 +114,11 @@ Step 1. Perform the openshift login.
         
 Step 2. Once logged in successfully, create a service account, with cluster roles to be used with spark jobs/deployments.
 
-        $> oc create serviceaccount spark
-        serviceaccount/spark created
-        
-        $> oc create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
-        clusterrolebinding.rbac.authorization.k8s.io/spark-role created
+![](images/1_6.png)
         
 Step 3. Now we need to locate the master URL. 
 
-        $> kubectl cluster-info
-           Kubernetes master is running at https://testing.containers.cloud.ibm.com:31310
-           Heapster is running at https://testing.containers.cloud.ibm.com:31310/api/v1/namespaces/kube-system/services/heapster/proxy
+![](images/1_7.png)
            
 Here the master URL is, `https://testing.containers.cloud.ibm.com:31310`
 
@@ -167,10 +150,7 @@ Once the image is ready, submit the spark job as follows.
                     
 Watch for the deployed driver,
 
-        $> oc get po -w
-        spark-xyz-driver
-        $> oc logs spark-xyz-driver
-        3.1452
+![](images/1_8.png)
 
 The example above comes along with Spark distribution, however one could write his
 own spark application and submit using the guide on [Spark Submit](http://spark.apache.org/docs/latest/submitting-applications.html).
